@@ -4,10 +4,21 @@
 ## usethis namespace: start
 #' @import ggplot2
 #' @import cowplot
+
+#' @title Get started with Simpson Paradox
+#' @description `hello_simpson` helps you to get started with the simpson-package. You don't need any input.
+#' @example examples/hellosimpson.R
+#' @returns A gentle introduction to the simpson package
 #' @export
 hello_simpson <- function() {
 print("In this package you will learn more about a statistical phenomenon that was named after a british statistician named Edward Hugh Simpson. As we will see, the outcomes of this phenomenon are sometimes quite curious and paradox. To learn more about these statistical curiosities, use the function get_started(). As input for this function, you need to chose a dataset. For educational purposes, we provide two example datasets in this package. Do you want to work with data on smoking behaviour and running speed? The chose the dataset called dash. Are you more interested in the development of wages in the US and how it differs in different educational subgroups? Then chose the dataset wages.")
 }
+
+#' @title Explore the datasets
+#' @description `explore` generates a scatterplot with a regression line to give you a first impression of the data.
+#' @param df  (dataframe dash or wages)
+#' @example examples/explore.R
+#' @returns A scatterplot and a description text on the console
 #' @export
 explore <- function(df) {
   if(substitute(df) == "dash") { #nochmal nach Alternative für substitute nachlesen
@@ -51,49 +62,12 @@ explore <- function(df) {
     stop("The dataset you chose is not in scope of this educational package. Please use the dataframe dash or wages")
   }
 }
-#' @export
-explore <- function(df) {
-  if(substitute(df) == "dash") { #nochmal nach Alternative für substitute nachlesen
 
-    plot <- ggplot2::ggplot(
-      data = df,
-      mapping = aes(
-        x = cigarettes_per_day,
-        y = time_100_meter
-      )) +
-      geom_point() +
-      geom_smooth(method = "lm", formula = "y ~ x") +
-      labs(
-        x = "Smoked cigarettes per day",
-        y = "Time for 100-meter dash (in sec)")
-
-    message("Take a look at the scatterplot on the right! It looks like that there is a negative correlation between the number of smoked cigarettes per day and the time students need for the 100-meter dash. The regression line suggests that students that smoke more are faster in the 100-meter dash. That's strange... let's check our assumption by calculating a regression analysis. Please use the function regression_all() for this purpose. As before, use dash as input of the function.")
-
-    return(plot)
-
-  } else if (substitute(df) == "wages") {
-
-    plot <- ggplot2::ggplot(
-      data = df,
-      mapping = aes(
-        x = year,
-        y = wage_per_month
-      )) +
-      geom_point() +
-      geom_smooth(method = "lm", formula = "y ~ x") +
-      labs(
-        x = "Year", #x-Achse noch besser formatieren
-        y = "Wage per month",
-      )
-
-    message("Take a look at the scatterplot on the right! Hmm... that looks kinda odd. When considering the regression line, it looks like that the monthly wages of US citizens rose overall since 2005. But by taking a look at the cases in the scatterplot, it doesn't look like that the wages didn't really increase. Let's double check that by calculating a regression analysis. Please use the function regression_all() for this purpose. As before, use wages as input of the function.")
-
-    return(plot)
-
-  } else {
-    stop("The dataset you chose is not in scope of this educational package. Please use the dataframe dash or wages")
-  }
-}
+#' @title Confirm the results from the scatterplot
+#' @description `regression_all` performs a regression analysis on the example data. All data (ungrouped) will be considered in the analysis.
+#' @param df  (dataframe dash or wages)
+#' @example examples/regression.R
+#' @returns A summary of the regression analysis and an interpretation of the results.
 #' @export
 regression_all <- function(df) {
   if(substitute(df) == "dash") {
@@ -115,6 +89,12 @@ regression_all <- function(df) {
   }
 
 }
+
+#' @title Take a look at the grouped data
+#' @description `explore_group` generates a scatterplot with several regression lines. Color is used to distinguish different groups from each other.
+#' @param df  (dataframe dash or wages)
+#' @example examples/explore_group.R
+#' @returns A scatterplot and an interpretation of the results.
 #' @export
 explore_group <- function(df) {
   if(substitute(df) == "dash") { #nochmal nach Alternative für substitute nachlesen
@@ -161,6 +141,11 @@ explore_group <- function(df) {
   }
 }
 
+#' @title Compare the ungrouped with the grouped results
+#' @description `compare` shows two scatterplot to explain the Simpson Paradox. The text in the console explains the concept.
+#' @param df  (dataframe dash or wages)
+#' @example examples/explore_group.R
+#' @returns A scatterplot, some intepretations and an explanation why the Simpson Paradox occurs.
 #' @export
 compare <- function(df) {
   if(substitute(df) == "dash") {
@@ -237,7 +222,6 @@ compare <- function(df) {
     stop("The dataset you chose is not in scope of this educational package. Please use the dataframe dash or wages")
   }
 }
-
 
 ## usethis namespace: end
 NULL

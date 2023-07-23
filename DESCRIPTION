@@ -1,17 +1,19 @@
 Package: simpson
 Type: Package
-Title: What the Package Does (Title Case)
+Title: The Simpson Paradox
 Version: 0.1.0
-Author: Who wrote it
-Maintainer: The package maintainer <yourself@somewhere.net>
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
-License: What license is it under?
+Author: Simon Herrmann
+Maintainer: simon.herrmann@campus.lmu.de
+Description: With the help of this package you can learn more about the    
+    Simpson Paradox. This package provides sample data and some functions
+    that help you explore this statistical phenomenon. Start your learning
+    journey with the function hello_simpson().
+License: MIT LICENSE
 Encoding: UTF-8
 LazyData: true
 Depends: 
     R (>= 2.10)
 RoxygenNote: 7.2.3
 Imports: 
-    ggpubr,
+    cowplot,
     ggplot2

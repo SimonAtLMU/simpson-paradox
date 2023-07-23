@@ -13,7 +13,7 @@ regression_all(df)
 A summary of the regression analysis and an interpretation of the results.
 }
 \description{
-`regression_all` performs a regression analysis on the example data. All data will be considered in the analysis.
+`regression_all` performs a regression analysis on the example data. All data (ungrouped) will be considered in the analysis.
 }
 \examples{
 regression_all(dash)

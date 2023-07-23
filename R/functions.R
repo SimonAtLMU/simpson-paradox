@@ -50,9 +50,11 @@ explore <- function(df) {
       geom_point() +
       geom_smooth(method = "lm", formula = "y ~ x") +
       labs(
-        x = "Year", #x-Achse noch besser formatieren
-        y = "Wage per month",
-      )
+        x = "Year",
+        y = "Wage per month (in USD)",
+      ) +
+      scale_x_continuous(breaks = c(2005, 2007, 2009, 2011, 2013),
+        labels = c("2005", "2007", "2009", "2011", "2013"))
 
     message("Take a look at the scatterplot on the right! Hmm... that looks kinda odd. When considering the regression line, it looks like that the monthly wages of US citizens rose overall since 2005. But by taking a look at the cases in the scatterplot, it doesn't look like that the wages really increased. Let's double check that by calculating a regression analysis. Please use the function regression_all() for this purpose. As before, use wages as input of the function.")
 
@@ -129,8 +131,10 @@ explore_group <- function(df) {
       geom_smooth(method = "lm", formula = "y ~ x") +
       labs(
         x = "Year", #x-Achse noch besser formatieren
-        y = "Wage per month",
-      )
+        y = "Wage per month (in USD)",
+      ) +
+      scale_x_continuous(breaks = c(2005, 2007, 2009, 2011, 2013),
+                         labels = c("2005", "2007", "2009", "2011", "2013"))
 
     message("What the heck?? When seperating the US citizens by their educational background the trend of the wage development suddenly changes. Now, it seems like that the salaries have shrunk since 2005. Let's compare this new result with the old one by using the function compare(). Please use wages as input again.")
 
@@ -194,8 +198,10 @@ compare <- function(df) {
       geom_smooth(method = "lm", formula = "y ~ x") +
       labs(
         x = "Year", #x-Achse noch besser formatieren
-        y = "Wage per month",
-      )
+        y = "Wage per month (in USD)",
+      ) +
+      scale_x_continuous(breaks = c(2005, 2007, 2009, 2011, 2013),
+                         labels = c("2005", "2007", "2009", "2011", "2013"))
 
     plot2 <- ggplot2::ggplot(
       data = df,
@@ -208,9 +214,11 @@ compare <- function(df) {
       geom_smooth(method = "lm", formula = "y ~ x") +
       labs(
         x = "Year", #x-Achse noch besser formatieren
-        y = "Wage per month",
+        y = "Wage per month (in USD)",
       ) +
-      theme(legend.position = "none")
+      theme(legend.position = "none") +
+      scale_x_continuous(breaks = c(2005, 2007, 2009, 2011, 2013),
+                         labels = c("2005", "2007", "2009", "2011", "2013"))
 
     plot_merged <- plot_grid(plot1, plot2, labels = c('Total', 'Grouped'), label_size = 9)
 

@@ -11,7 +11,7 @@
 #' @returns A gentle introduction to the simpson package
 #' @export
 hello_simpson <- function() {
-message("In this package you will learn more about a statistical phenomenon that was named after a british statistician named Edward Hugh Simpson. As we will see, the outcomes of this phenomenon are sometimes quite curious and paradox. To learn more about these statistical curiosities, use the function explore(). As input for this function, you need to chose a dataset. For educational purposes, we provide two example datasets in this package. Do you want to work with data on smoking behaviour and running speed? The chose the dataset called dash. Are you more interested in the development of wages in the US and how it differs in different educational subgroups? Then chose the dataset wages.")
+message("In this package you will learn more about a statistical phenomenon that was named after a british statistician named Edward Hugh Simpson. As we will see, the outcomes of this phenomenon are sometimes quite curious and paradox. To learn more about these statistical curiosities, use the function explore(). As input for this function, you need to chose a dataset. For educational purposes, we provide two example datasets in this package. Do you want to work with data on smoking behaviour and running speed? Then chose the dataset called dash. Are you more interested in the development of wages in the US and how it differs in different educational subgroups? Then chose the dataset wages.")
 }
 
 #' @title Explore the datasets
@@ -75,7 +75,7 @@ regression_all <- function(df) {
   if(substitute(df) == "dash") {
     regression_linear <- lm(cigarettes_per_day ~ time_100_meter, data = df)
 
-    message("Can you believe that? The regression analysis testifies that students that smoke more are faster in the 100-meter dash. How is this possible? This result is against every intuition we have about the health effects on smoking?! Let's see how this relationship is when we differ between men and women. Use the function explore_group() for this reason.")
+    message("Can you believe that? The regression analysis testifies that students that smoke more are faster in the 100-meter dash. How is this possible? This result is against every intuition we have about the health effects of smoking?! Let's see how this relationship is when we differ between men and women. Use the function explore_group() for this reason.")
 
     return(summary(regression_linear))
 
@@ -182,7 +182,7 @@ compare <- function(df) {
 
     plot_merged <- plot_grid(plot1, plot2, labels = c('Total', 'Grouped'), label_size = 9)
 
-    message("The thing we can see right here is a perfect example of the Simpson Paradox. We get different results depending on the groups we take into account in our regression analysis: when looking at all students, smoking cigarettes seems to have a positive impact on running speed (or negative on the time needed - shown in the scatterplot). But when we differ between sexes, we see that smoking has a negative effect on running speed (Students that smoke more need more time for the 100-meter dash). The Simpson paradox occurs because the two sexes differ in one characteristic that we did not consider at all in the first analysis: smoking behaviour. We see that male students tend to smoke more than female students. Just because boys run faster than girls on average (maybe because of physiological differences), the regression analyses of the whole group suggests that smoking more make you run faster. But as we know, that's untrue! So always think of confunding variables when developing a study or analyzing data. The Simpson Paradox might be in your data :)")
+    message("The thing we can see right here is a perfect example of the Simpson Paradox. We get different results depending on the groups we take into account in our regression analysis: when looking at all students (Total), smoking cigarettes seems to have a positive impact on running speed (or negative on the time needed - shown in the scatterplot). But when we differ between sexes (Grouped), we see that smoking has a negative effect on running speed (Students that smoke more need more time for the 100-meter dash). The Simpson paradox occurs because the two sexes differ in one characteristic that we did not consider at all in the first analysis: smoking behaviour. We see that male students tend to smoke more than female students. Just because boys run faster than girls on average (maybe because of physiological differences), the regression analyses of the whole group suggests that smoking more make you run faster. But as we know, that's untrue! So always think of confunding variables when developing a study or analyzing data. The Simpson Paradox might occur in your data :)")
 
     return(plot_merged)
 
